@@ -23,14 +23,20 @@ db = SqliteDatabase(DB_FILE_PATH)
 
 
 class BaseModel(DbModel):
+    created_at = DateTimeField(default=datetime.datetime.now)
+    updated_at = DateTimeField(default=datetime.datetime.now)
+
     class Meta:
         database = db
+
+    def save(self, *args, **kwargs):
+        self.updated_at = datetime.datetime.now()
+        return super(BaseModel, self).save(*args, **kwargs)
 
 
 class Model(BaseModel):
     username = CharField(unique=True)
     is_active = BooleanField(index=True, default=True)
-    created_at = DateTimeField(default=datetime.datetime.now)
 
 
 def init() -> None:
