@@ -1,10 +1,15 @@
 from typing import List
 import logging
+import os
+
 import yaml
 
-CONFIG_FILE_PATH = "../downloads/config.yaml"
+from definition import ROOT_DIR
+
+CONFIG_FILE_PATH = os.path.join(ROOT_DIR, "..", "downloads", "config.yaml")
 
 logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 
 def get_models(config_file_path: str = CONFIG_FILE_PATH) -> List[str]:
