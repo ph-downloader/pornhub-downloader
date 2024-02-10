@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 yt-dlp = "^2023.12.30"
+peewee = "^3.17.1"
 
 
 [build-system]

@@ -328,6 +328,16 @@ files = [
 ]
 
 [[package]]
+name = "peewee"
+version = "3.17.1"
+description = "a little orm"
+optional = false
+python-versions = "*"
+files = [
+    {file = "peewee-3.17.1.tar.gz", hash = "sha256:e009ac4227c4fdc0058a56e822ad5987684f0a1fbb20fed577200785102581c3"},
+]
+
+[[package]]
 name = "pycparser"
 version = "2.21"
 description = "C parser in Python"
@@ -522,4 +532,4 @@ websockets = ">=12.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "235d4efebab5590236ca79efe3e6b4f56e4507d8283daadab01df118f92c1fae"
+content-hash = "570135103b69519a627d2a7c75e1f1efb436f384b77320559005e983310cbe29"
