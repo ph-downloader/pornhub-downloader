@@ -3,6 +3,9 @@ services:
   pornhub-downloader:
     image: ghcr.io/ph-downloader/pornhub-downloader:release
     container_name: pornhub-downloader
+    environment:
+      - PUID= # `id -u`
+      - PGID= # `id -g`
     volumes:
       - /YOUR/PATH/TO/DOWNLOADS/HERE:/pornhub-downloader/downloads
     restart: unless-stopped
