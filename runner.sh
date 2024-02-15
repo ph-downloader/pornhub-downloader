@@ -2,7 +2,7 @@
 
 while true
 do
-    date
+    echo "Current run: `date`"
     poetry run python pornhub_downloader/downloader.py
     sleep 3600
 done
