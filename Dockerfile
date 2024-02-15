@@ -1,7 +1,8 @@
 FROM python:3.12.2-alpine3.19
 
 RUN apk add git poetry
-RUN git clone https://github.com/ph-downloader/pornhub-downloader.git
+COPY poetry.lock pyproject.toml runner.sh pornhub-downloader/
+COPY pornhub_downloader/ pornhub-downloader/pornhub_downloader/
 
 WORKDIR /pornhub-downloader
 
