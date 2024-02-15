@@ -55,25 +55,25 @@ def init() -> None:
     db.create_tables([Model, Video])
 
 
-def update_models(models: List[str]) -> None:
-    for model in models:
-        model_in_db, created = Model.get_or_create(username=model)
+def update_models(usernames: List[str]) -> None:
+    for username in usernames:
+        model, created = Model.get_or_create(username=username)
         if created:
-            logger.info(f"Created model {model}")
-        elif model_in_db.is_active:
-            logger.info(f"Model {model} already exists")
+            logger.info(f"Created model {model.username}")
+        elif model.is_active:
+            logger.info(f"Model {model.username} already exists")
         else:
-            model_in_db.is_active = True
-            model_in_db.save()
-            logger.info(f"Set model {model} to active")
+            model.is_active = True
+            model.save()
+            logger.info(f"Set model {model.username} to active")
 
-    active_models_in_db = Model.select().where(Model.is_active)
-    models_set = set(models)
-    for active_model_in_db in active_models_in_db:
-        if active_model_in_db.username not in models_set:
-            active_model_in_db.is_active = False
-            active_model_in_db.save()
-            logger.info(f"Set model {active_model_in_db.username} to inactive")
+    active_models = Model.select().where(Model.is_active)
+    usernames_set = set(usernames)
+    for active_model in active_models:
+        if active_model.username not in usernames_set:
+            active_model.is_active = False
+            active_model.save()
+            logger.info(f"Set model {active_model.username} to inactive")
 
 
 def insert_videos(username: str, video_metadatas: List[VideoMetadata]) -> None:
