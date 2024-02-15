@@ -1,6 +1,6 @@
-FROM python:3.12.2-alpine3.19
+FROM python:3.11-alpine
 
-RUN apk add git poetry
+RUN apk add poetry
 COPY poetry.lock pyproject.toml runner.sh pornhub-downloader/
 COPY pornhub_downloader/ pornhub-downloader/pornhub_downloader/
 
