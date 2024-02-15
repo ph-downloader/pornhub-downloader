@@ -8,6 +8,7 @@ import yt_dlp
 
 from definition import ROOT_DIR
 
+
 CONFIG_FILE_PATH = os.path.join(ROOT_DIR, "..", "downloads", "config.yaml")
 
 logger = logging.getLogger(__name__)

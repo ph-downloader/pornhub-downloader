@@ -99,5 +99,15 @@ def insert_videos(username: str, video_metadatas: List[VideoMetadata]) -> None:
             )
 
 
+def get_undownloaded_videos() -> List[Video]:
+    return Video.select().where(Video.is_downloaded == False)
+
+
+def update_undownloaded_videos(videos: List[Video]) -> None:
+    for video in videos:
+        video.is_downloaded = True
+        video.save()
+
+
 def extract_view_key(url: str) -> str:
     return url.strip().split("=")[-1]
