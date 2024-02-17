@@ -1,5 +1,4 @@
 import datetime
-import logging
 import os
 from typing import List
 
@@ -12,14 +11,14 @@ from peewee import (
     SqliteDatabase,
 )
 
+import util
 from definition import ROOT_DIR
 from config import VideoMetadata
 
 
 DB_FILE_PATH = os.path.join(ROOT_DIR, "..", "downloads", "metadata.db")
 
-logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO)
+logger = util.get_logger(__name__)
 
 
 db = SqliteDatabase(DB_FILE_PATH)

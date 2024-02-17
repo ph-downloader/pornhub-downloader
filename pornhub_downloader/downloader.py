@@ -1,24 +1,23 @@
 #!/usr/bin/env python3
 
-import logging
 import os
 
 import yt_dlp
 
 import db
+import util
 from config import get_models, get_videos
 from definition import ROOT_DIR
 
 
-logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO)
+logger = util.get_logger(__name__)
 
 DOWNLOADS_PATH = os.path.join(ROOT_DIR, "..", "downloads")
 
 
 def download_video(model: str, url: str) -> None:
     with yt_dlp.YoutubeDL(
-        {"paths": {"home": os.path.join(DOWNLOADS_PATH, model)}}
+        {"paths": {"home": os.path.join(DOWNLOADS_PATH, model)}, "quiet": True}
     ) as ydl:
         logger.info(f"Downloading {url} for model {model}")
         ydl.download([url])

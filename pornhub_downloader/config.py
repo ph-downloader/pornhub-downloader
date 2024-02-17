@@ -1,18 +1,17 @@
 from dataclasses import dataclass
 from typing import List
-import logging
 import os
 
 import yaml
 import yt_dlp
 
+import util
 from definition import ROOT_DIR
 
 
 CONFIG_FILE_PATH = os.path.join(ROOT_DIR, "..", "downloads", "config.yaml")
 
-logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO)
+logger = util.get_logger(__name__)
 
 
 @dataclass
